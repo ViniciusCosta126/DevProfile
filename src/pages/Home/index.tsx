@@ -1,10 +1,24 @@
 import React from 'react';
-import { Text, View } from 'react-native';
+import * as C from './styles';
+import avatarDefault from '../../assets/avatar02.png';
 
 export const Home: React.FunctionComponent = () => {
   return (
-    <View>
-      <Text>Home Page</Text>
-    </View>
+    <C.Container>
+      <C.Header>
+        <C.UserWrapper>
+          <C.UserInfo>
+            <C.UserAvatarButton onPress={() => {}}>
+              <C.UserAvatar source={avatarDefault} />
+            </C.UserAvatarButton>
+            <C.UserInfoDetail>
+              <C.UserGreeting>Ola,</C.UserGreeting>
+              <C.UserName>Vinicius</C.UserName>
+            </C.UserInfoDetail>
+          </C.UserInfo>
+          <C.Icon name="power" />
+        </C.UserWrapper>
+      </C.Header>
+    </C.Container>
   );
 };
