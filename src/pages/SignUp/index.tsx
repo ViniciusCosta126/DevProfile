@@ -7,7 +7,7 @@ import logo from '../../assets/logo.png';
 import { useNavigation } from '@react-navigation/native';
 
 interface ScreenNavigationProp {
-  navigate: () => void;
+  goBack: () => void;
 }
 export const SignUp: React.FunctionComponent = () => {
   const { goBack } = useNavigation<ScreenNavigationProp>();
