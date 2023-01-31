@@ -8,6 +8,7 @@ import { useForm, FieldValues } from 'react-hook-form';
 import { InputControl } from '../../components/Forms/InputControl';
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
+import { api } from '../../services/api';
 interface ScreenNavigationProp {
   goBack: () => void;
 }
@@ -31,13 +32,18 @@ export const SignUp: React.FunctionComponent = () => {
     resolver: yupResolver(formSchema),
   });
 
-  const handleSignUp = (form: IFormInputs) => {
+  const handleSignUp = async (form: IFormInputs) => {
     const data = {
       name: form.name,
       email: form.email,
       password: form.password,
     };
-    console.log(data);
+    try {
+      await api.post('users', data);
+      alert('Cadastro Realizado, Voce ja pode realizar loguin');
+    } catch (error) {
+      alert('Ocorreu um erro ao cadastrar usuario');
+    }
   };
   return (
     <KeyboardAvoidingView

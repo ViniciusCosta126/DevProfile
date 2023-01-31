@@ -1,5 +1,5 @@
 import * as C from './styles';
-import React from 'react';
+import React, { useContext } from 'react';
 import { ScrollView, KeyboardAvoidingView, Platform, View } from 'react-native';
 import { Button } from '../../components/Forms/Button';
 import logo from '../../assets/logo.png';
@@ -8,6 +8,7 @@ import { useNavigation } from '@react-navigation/native';
 import { InputControl } from '../../components/Forms/InputControl';
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
+import { AuthContext } from '../../context/AuthContex';
 interface ScreenNavigationProp {
   navigate: (screen: string) => void;
 }
@@ -20,6 +21,7 @@ const formSchema = yup.object({
   password: yup.string().required('Informe a senha'),
 });
 export const SignIn: React.FunctionComponent = () => {
+  const auth = useContext(AuthContext);
   const { navigate } = useNavigation<ScreenNavigationProp>();
   const {
     handleSubmit,

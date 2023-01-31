@@ -11,6 +11,7 @@ import AppLoading from 'expo-app-loading';
 import { NavigationContainer } from '@react-navigation/native';
 
 import { Routes } from './src/routes';
+import { AuthContext } from './src/context/AuthContex';
 
 const App: React.FunctionComponent = () => {
   const [fontsLoaded] = useFonts({
@@ -24,7 +25,9 @@ const App: React.FunctionComponent = () => {
   return (
     <NavigationContainer>
       <ThemeProvider theme={theme}>
-        <Routes />
+        <AuthContext.Provider value={{ name: 'jorge' }}>
+          <Routes />
+        </AuthContext.Provider>
       </ThemeProvider>
     </NavigationContainer>
   );
